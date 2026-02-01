@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    animation: colorFlash 3s infinite;
+}
+
+@keyframes colorFlash {
+    0% { background-color: #ff0000; }
+    16.66% { background-color: #ff8000; }
+    33.33% { background-color: #ffff00; }
+    50% { background-color: #80ff00; }
+    66.66% { background-color: #00ffff; }
+    83.33% { background-color: #8000ff; }
+    100% { background-color: #ff0000; }
+}
+
+.book-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.book {
+    position: relative;
+    width: 1000px;
+    height: 700px;
+    perspective: 1000px;
+}
+
+.left-page {
+    position: absolute;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+}
+
+.right-page {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    transform-origin: left center;
+}
+
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+.right-page.flipped {
+    transform: rotateY(-180deg);
+}
+
+.controls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
